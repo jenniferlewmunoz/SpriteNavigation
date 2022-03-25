@@ -25,6 +25,12 @@ var tree1;
 var tree2;
 var tree3;
 
+// W - A - S - D ascii values
+const W_KEY = 87;
+const S_KEY = 83;
+const D_KEY = 68;
+const A_KEY = 65;
+
 function preload() {
   starImg = loadImage('assets/fullStar.png');
 }
@@ -91,31 +97,49 @@ function keyPressed() {
 }
 
 function checkMovement() {
+  // Ghost avatar movement
   // Check x movement
   if (keyIsDown(RIGHT_ARROW)) {
     ghost.velocity.x = speed;
-    bird.velocity.x = speed;
   }
   else if (keyIsDown(LEFT_ARROW)) {
     ghost.velocity.x = -speed;
-    bird.velocity.x = -speed;
   }
   else {
     ghost.velocity.x = 0;
-    bird.velocity.x = 0;
   }
 
   // Check y movement
   if (keyIsDown(DOWN_ARROW)) {
     ghost.velocity.y = speed;
-    bird.velocity.y = speed;
   }
   else if (keyIsDown(UP_ARROW)) {
     ghost.velocity.y = -speed;
-    bird.velocity.y = -speed;
   }
   else {
     ghost.velocity.y = 0;
+  }
+
+  // Blob avatar movement
+  // Check x movement
+  if (keyIsDown(D_KEY)) { // Right
+    bird.velocity.x = speed;
+  }
+  else if (keyIsDown(A_KEY)) { // Left
+    bird.velocity.x = -speed;
+  }
+  else {
+    bird.velocity.x = 0;
+  }
+
+  // Check y movement
+  if (keyIsDown(S_KEY)) { // Down
+    bird.velocity.y = speed;
+  }
+  else if (keyIsDown(W_KEY)) { // Up
+    bird.velocity.y = -speed;
+  }
+  else {
     bird.velocity.y = 0;
   }
 
